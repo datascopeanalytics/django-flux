@@ -10,6 +10,7 @@ class SocialActivityStats(models.Model):
         abstract = True
 
     date = models.DateField(
+        unique=True,
         help_text="Enter the date the content was shared.",
     )
     count = models.IntegerField(
@@ -19,12 +20,12 @@ class SocialActivityStats(models.Model):
 
 class TwitterStats(SocialActivityStats):
     """Track the number of tweets that are posted per day by the
-    twitter account specified by SOCIAL_ACTIVITY.TWITTER.USERNAME
+    twitter account specified by SOCIAL_ACTIVITY_TWITTER_USERNAME
     """
 
 class RssStats(SocialActivityStats):
     """Track the number of articles that are posted per day in the RSS
-    feed specified by SOCIAL_ACTIVITY.RSS.URL
+    feed specified by SOCIAL_ACTIVITY_RSS_URL
     """
 
 class FacebookStats(SocialActivityStats):
