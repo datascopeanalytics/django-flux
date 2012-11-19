@@ -25,11 +25,11 @@ class BaseStats(models.Model):
     class Meta:
         abstract = True
 
-    account = models.ForeignKey(
-        BaseAccount,
-        db_index=True,
-        help_text="THIS IS OVERRIDDEN BY ALL CHILD CLASSES",
-    )
+    # account = models.ForeignKey(
+    #     BaseAccount,
+    #     db_index=True,
+    #     help_text="THIS IS OVERRIDDEN BY ALL CHILD CLASSES",
+    # )
     date = models.DateField(
         unique=True,
         help_text="Enter the date the content was shared.",
@@ -39,7 +39,7 @@ class BaseStats(models.Model):
         help_text="Enter the number of pieces of content per day",
     )
 
-class TwitterAccount(Account):
+class TwitterAccount(BaseAccount):
     """Twitter accounts to track
     """
 
@@ -49,6 +49,7 @@ class TwitterStats(BaseStats):
     """
     account = models.ForeignKey(
         TwitterAccount,
+        db_index=True,
     )
 
 # class RssAccount(BaseAccount):
@@ -61,6 +62,7 @@ class TwitterStats(BaseStats):
 #     """
 #     account = models.ForeignKey(
 #         RssAccount,
+#         db_index=True,
 #     )
 
 # class LinkedInAccount(BaseAccount):
@@ -72,6 +74,7 @@ class TwitterStats(BaseStats):
 #     """
 #     account = models.ForeignKey(
 #         LinkedInAccount,
+#         db_index=True,
 #     )
 
 # class FacebookAccount(BaseAccount):

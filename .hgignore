@@ -3,3 +3,5 @@ syntax: glob
 *~
 *.orig
 *.pyc
+
+example_project/*.db
