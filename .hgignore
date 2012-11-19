@@ -1,7 +1,13 @@
 syntax: glob
 
+# ignore junk files
 *~
 *.orig
 *.pyc
 
+# ignore the test db used for development purposes only
 example_project/*.db
+
+# ignore distribution builds for pypi
+django_flux.egg-info/
+dist/
