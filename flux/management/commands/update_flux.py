@@ -1,46 +1,66 @@
 import sys
 import datetime
+import optparse
 
 import twitter
 
 from django.core.management.base import CommandError, BaseCommand
 
-from social_activity.conf import settings
-from social_activity import models
+from flux.conf import settings
+from flux import models
 
 class Command(BaseCommand):
     __doc__ = """
-    Download all of the activity for all of the 'social' feeds (e.g.,
+    Download all of the activity for all of the content feeds (e.g.,
     twitter, RSS, etc). This downloads all of the relevant data and
-    stores it locally in the database.
+    stores it in the django database.
     """
     args = ''
     help = __doc__
+    option_list = BaseCommand.option_list + (
+        optparse.make_option(
+            "-q", "--quiet", dest="quiet", action="store_true", default=False, 
+            help="do not report updates to stderr."
+        ),
+    )
 
-    def update_db(self, counter, model_cls):
-        """Update the database specified by model_cls with the latest
+    def update_db(self, account, counter):
+        """Update the database for this account with the latest date
         counts from counter. If the counts are the same, do not update
-        the stored information.x
+        the stored information.
         """
+        
+        if not isinstance(account, models.Account):
+            raise TypeError('account must be of type models.Account')
 
         for date in sorted(counter):
-            instance, created = model_cls.objects.get_or_create(date=date)
+            instance, created = models.Flux.objects.get_or_create(
+                account=account, 
+                date=date,
+            )
             if created or instance.count < counter[date]:
                 instance.count = counter[date]
                 instance.save()
+                if not self.options["quiet"]:
+                    if created:
+                        verb = "created"
+                    else:
+                        verb = "updated"
+                    self.stderr.write("%s %s\n" % (verb, instance))
 
-    def handle(self, *args, **kwargs):
+    def update_twitter(self):
+        """Update the TwitterStats table for all TwitterAccounts
+        """
 
-        # find the number of twitter posts on each day
-        if settings.SOCIAL_ACTIVITY_TWITTER_USERNAME:
-
+        for account in models.Account.objects.filter(type__exact="twitter"):
+        
             # Get all of the statuses that would appear in the
             # username timeline if you started following this
             # person. Here, we include retweets (include_rts) because
             # all retweets appear in a follower's timeline.
             api = twitter.Api()
             statuses = api.GetUserTimeline(
-                settings.SOCIAL_ACTIVITY_TWITTER_USERNAME, 
+                account.name,
                 count=200, # this is the maximum
                 include_rts=True,
                 # exclude_replies=True,
@@ -62,8 +82,11 @@ class Command(BaseCommand):
                     counter[t] = 1
 
             # insert data into the database
-            self.update_db(counter, models.TwitterStats)
+            self.update_db(account, counter)
 
-        # if settings.SOCIAL_ACTIVITY_RSS_URL:
+    def handle(self, *args, **kwargs):
+
+        self.options = kwargs
+        self.update_twitter()
 
             
