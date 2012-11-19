@@ -13,8 +13,23 @@ content will be useful for you.
 Quick start
 ===========
 
-TODO: FILL THIS IN WHEN pip IS WORKING
+#. Install `django-flux` with `pip <http://www.pip-installer.org/en/latest/>`_::
 
+    $ pip install django-flux
+
+#. Add accounts for `django-flux` to monitor by visiting the admin
+   page of your site (likely http://localhost:8000/admin/)
+
+#. Run the update_flux management command::
+
+    $ python manage.py update_flux
+
+#. TODO: UPDATE WHEN PRELIMINARY VIEW IS AVAILABLE
+
+Production usage
+================
+
+TODO: EXPLAIN HOW TO INSTALL IN CRONTAB IN PRODUCTION ENVIRONMENTS
 
 How it works
 ============
