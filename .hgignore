@@ -5,6 +5,9 @@ syntax: glob
 *.orig
 *.pyc
 
+# ignore virtualenv
+example_project/env/
+
 # ignore the test db used for development purposes only
 example_project/*.db
 

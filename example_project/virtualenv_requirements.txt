@@ -1,0 +1,8 @@
+# to install virtualenv, run the following sequence of commands:
+#
+#     [bash]$ virtualenv --no-site-packages --setuptools env
+#     [bash]$ virtualenv env 
+#     [bash]$ env/bin/pip install -r virtualenv_requirements.txt
+
+django
+python-twitter
