@@ -7,7 +7,7 @@ Although this information is readily available and often a click or
 two away, these additional clicks create an unnecessary barrier to
 entry. The goal of django-flux is to make it possible to quickly
 assess the utility of following a particular feed of content and
-whether the [flux](http://en.wikipedia.org/wiki/Flux) of relevant
+whether the `flux <http://en.wikipedia.org/wiki/Flux>`_ of relevant
 content will be useful for you.
 
 Quick start
