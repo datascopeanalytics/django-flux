@@ -11,9 +11,9 @@ class Account(models.Model):
     
     TYPES = (
         ("twitter", "Twitter"),
+        ("rss", "RSS"),
 
         # # FUTURE
-        # ("rss", "RSS"),
         # ("facebook", "Facebook"),
         # ("google+", "Google+"),
         # ("linkedin", "LinkedIn"),

@@ -5,15 +5,18 @@ irrelevant content?
 
 Although this information is readily available and often a click or
 two away, these additional clicks create an unnecessary barrier to
-entry. The goal of django-flux is to make it possible to quickly
+entry. The goal of `flux` is to make it possible to quickly
 assess the utility of following a particular feed of content and
 whether the `flux <http://en.wikipedia.org/wiki/Flux>`_ of relevant
-content will be useful for you.
+content will be useful for you. Currently, `flux` supports:
+
+* Twitter
+* RSS
 
 Quick start
 ===========
 
-#. Install `django-flux` with `pip <http://www.pip-installer.org/en/latest/>`_::
+#. Install `flux` with `pip <http://www.pip-installer.org/en/latest/>`_::
 
     $ pip install django-flux
 
@@ -26,7 +29,7 @@ Quick start
 #. Add accounts to monitor by visiting the admin page of your site
    (likely http://localhost:8000/admin/flux/account/add)
 
-#. Run the update_flux management command::
+#. Run the `update_flux` management command::
 
     $ python manage.py update_flux
 
@@ -57,10 +60,10 @@ TODO: DESCRIBE TEMPLATE TAGS
 Contribute!
 ===========
 
-#. Clone django-flux from `github
+#. Clone the code from `github
    <https://github.com/deanmalmgren/django-flux>`_
 
 #. Setup the virtualenv by following the instructions in
    example_project/virtualenv_requirements.txt
 
-#. Edit, test, and share your code.
+#. Edit, test, and share your code. 
