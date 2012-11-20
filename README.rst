@@ -5,22 +5,22 @@ irrelevant content?
 
 Although this information is readily available and often a click or
 two away, these additional clicks create an unnecessary barrier to
-entry. The goal of `flux` is to make it possible to quickly
+entry. The goal of ``flux`` is to make it possible to quickly
 assess the utility of following a particular feed of content and
 whether the `flux <http://en.wikipedia.org/wiki/Flux>`_ of relevant
-content will be useful for you. Currently, `flux` supports:
+content will be useful for you. Currently, ``flux`` supports:
 
-* Twitter
-* RSS
+* Twitter via `python-twitter <https://github.com/bear/python-twitter>`_
+* RSS via `feedparser <http://packages.python.org/feedparser/>`_
 
 Quick start
 ===========
 
-#. Install `flux` with `pip <http://www.pip-installer.org/en/latest/>`_::
+#. Install ``flux`` with `pip <http://www.pip-installer.org/en/latest/>`_::
 
-    $ pip install django-flux
+    [shell]$ pip install django-flux
 
-#. Add `flux` to the `INSTALLED_APPS
+#. Add ``flux`` to the `INSTALLED_APPS
    <https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps>`
    in `settings.py` of your django project::
 
@@ -31,7 +31,7 @@ Quick start
 
 #. Run the `update_flux` management command::
 
-    $ python manage.py update_flux
+    [shell]$ python manage.py update_flux
 
 #. TODO: UPDATE WHEN PRELIMINARY VIEW IS AVAILABLE
 
@@ -48,7 +48,7 @@ make it possible to access their data in real time. The tricky bit is
 that it is often slower to request this information from several
 different APIs than it is to make a single request to a single
 centralized server. So as to not decrease site performance,
-django-flux provides the functionality to fetch and store this data
+``flux`` provides the functionality to fetch and store this data
 locally.
 
 TODO: DESCRIBE MODELS
