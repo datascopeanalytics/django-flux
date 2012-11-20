@@ -1,15 +1,14 @@
 v0.1
 
-* add RSS capability
-
-* test that django-flux properly installs via pip
-
 * add some basic views to prepare template tags to easily pull
    information into other views
 
 * add settings.FLUX_TIME_WINDOW environment variable to specify the
    time window over which we should aggregate information for display
    in the templates
+
+* add 0.1.0 tag and test that django-flux properly installs via pip
+
 
 v0.2
 
