@@ -26,8 +26,10 @@ Quick start
 
     INSTALLED_APPS += ('flux', )
 
-#. Add accounts to monitor by visiting the admin page of your site
-   (likely http://localhost:8000/admin/flux/account/add)
+#. Make sure the `admin is enabled
+   <https://docs.djangoproject.com/en/dev/intro/tutorial02/#activate-the-admin-site>`_
+   on your site and add accounts to monitor by visiting the admin page
+   of your site (likely http://localhost:8000/admin/flux/account/add)
 
 #. Run the `update_flux` management command::
 
@@ -38,7 +40,10 @@ Quick start
 Production usage
 ================
 
-TODO: EXPLAIN HOW TO INSTALL IN CRONTAB IN PRODUCTION ENVIRONMENTS
+To have the feeds monitored be continuously updated, add the following
+line to your `crontab <http://en.wikipedia.org/wiki/Cron>`_::
+
+    0 0 * * * /path/to/manage.py update_flux
 
 How it works
 ============
@@ -66,4 +71,6 @@ Contribute!
 #. Setup the virtualenv by following the instructions in
    example_project/virtualenv_requirements.txt
 
-#. Edit, test, and share your code. 
+#. Edit, test, and share your code. See the `issues page
+   <https://github.com/deanmalmgren/django-flux/issues>`_ for
+   inspiration.
