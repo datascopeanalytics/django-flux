@@ -48,13 +48,19 @@ class Account(models.Model):
         """
 
         # aggregate all of the old data points. 
-        beg = datetime.date.today() - settings.FLUX_MAX_TIME_WINDOW
+        #
+        # NOTE: this oldest_date functionality isn't quite right. if
+        # oldest_date>beg, the last bin can go into the future in the
+        # Timeseries
+        end = datetime.date.today() 
+        beg = end - settings.FLUX_MAX_TIME_WINDOW
         oldest_date = self.flux_set.aggregate(models.Min("date"))['date__min']
         timeseries = utils.Timeseries(
             beg=max(beg, oldest_date),
-            end=datetime.date.today(),
+            end=end,
         )
-        for flux in self.flux_set.filter(date__gte=beg).order_by("date"):
+        for flux in self.flux_set.filter(date__gte=beg, date__lt=end)\
+                .order_by("date"):
             timeseries.append((flux.date, flux.count))
 
         # return a utils.Timeseries instance
