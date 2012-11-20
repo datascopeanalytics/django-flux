@@ -17,8 +17,14 @@ Quick start
 
     $ pip install django-flux
 
-#. Add accounts for `django-flux` to monitor by visiting the admin
-   page of your site (likely http://localhost:8000/admin/)
+#. Add `flux` to the `INSTALLED_APPS
+   <https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps>`
+   in `settings.py` of your django project::
+
+    INSTALLED_APPS += ('flux', )
+
+#. Add accounts to monitor by visiting the admin page of your site
+   (likely http://localhost:8000/admin/flux/account/add)
 
 #. Run the update_flux management command::
 
@@ -46,7 +52,15 @@ TODO: DESCRIBE MODELS
 
 TODO: DESCRIBE MANAGEMENT COMMANDS
 
+TODO: DESCRIBE TEMPLATE TAGS
+
 Contribute!
 ===========
 
-TODO: DESCRIBE HOW TO EXTEND django-flux
+#. Clone django-flux from `github
+   <https://github.com/deanmalmgren/django-flux>`_
+
+#. Setup the virtualenv by following the instructions in
+   example_project/virtualenv_requirements.txt
+
+#. Edit, test, and share your code.

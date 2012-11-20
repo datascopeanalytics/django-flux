@@ -3,6 +3,14 @@
 #     [bash]$ virtualenv --no-site-packages --setuptools env
 #     [bash]$ virtualenv env 
 #     [bash]$ env/bin/pip install -r virtualenv_requirements.txt
+#
+# to work within this virtualenv, simply run
+#
+#     [bash]$ source env/bin/activate
+#     (env)[bash]$ ./manage.py runserver
 
 django
 python-twitter
+# fbconsole
+# mechanize
+# python-linkedin
