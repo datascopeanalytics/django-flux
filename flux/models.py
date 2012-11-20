@@ -1,3 +1,4 @@
+import os
 import datetime
 
 from django.db import models
@@ -65,6 +66,12 @@ class Account(models.Model):
 
         # return a utils.Timeseries instance
         return timeseries
+
+    def get_mean_label_template(self):
+        return os.path.join(
+            "flux",
+            "mean_label_%s.html" % self.type,
+        )
 
 class Flux(models.Model):
     """Model for storing social activity flux for various data feeds.

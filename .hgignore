@@ -5,11 +5,10 @@ syntax: glob
 *.orig
 *.pyc
 
-# ignore virtualenv
+# ignore virtualenv, testing db, and static media directory
 example_project/env/
-
-# ignore the test db used for development purposes only
 example_project/*.db
+example_project/static/
 
 # ignore distribution builds for pypi
 django_flux.egg-info/

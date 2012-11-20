@@ -52,3 +52,10 @@ class Timeseries(list):
         # increment the bin count
         bin.count += count
 
+    def mean(self):
+        """Return the mean count in every bin
+        """
+        total = 0.0
+        for bin in self:
+            total += bin.count
+        return total / len(self)
