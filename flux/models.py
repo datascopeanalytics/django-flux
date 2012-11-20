@@ -1,4 +1,9 @@
+import datetime
+
 from django.db import models
+
+import utils
+from conf import settings
 
 class Account(models.Model):
     """Model for storing information about each account we want to
@@ -37,6 +42,23 @@ class Account(models.Model):
 
     def __unicode__(self):
         return "%s: %s" % (self.type, self.name)
+
+    def get_timeseries(self):
+        """Get the timeseries specified for this account.
+        """
+
+        # aggregate all of the old data points. 
+        beg = datetime.date.today() - settings.FLUX_MAX_TIME_WINDOW
+        oldest_date = self.flux_set.aggregate(models.Min("date"))['date__min']
+        timeseries = utils.Timeseries(
+            beg=max(beg, oldest_date),
+            end=datetime.date.today(),
+        )
+        for flux in self.flux_set.filter(date__gte=beg).order_by("date"):
+            timeseries.append((flux.date, flux.count))
+
+        # return a utils.Timeseries instance
+        return timeseries
 
 class Flux(models.Model):
     """Model for storing social activity flux for various data feeds.
