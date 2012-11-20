@@ -1,3 +1,4 @@
+import os
 from distutils.core import setup
 from setuptools import find_packages
 
@@ -6,6 +7,15 @@ from setuptools import find_packages
 #   * http://bruno.im/2010/may/05/packaging-django-reusable-app/
 #   * http://stackoverflow.com/questions/5360873/how-do-i-package-a-python-application-to-make-it-pip-installable
 
+# read in the dependencies from the virtualenv requirements file
+dependencies = []
+filename = os.path.join("example_project", "virtualenv_requirements.txt") 
+with open(filename, 'r') as stream:
+    for line in stream:
+        package = line.strip().split('#')[0]
+        if package:
+            dependencies.append(package)
+
 setup(
     name="django-flux",
     version="0.1.0",
@@ -13,15 +23,9 @@ setup(
     long_description=open('README.rst').read(),
     author="Dean Malmgren",
     author_email="dean.malmgren@datascopeanalytics.com",
-    license="LICENSE.rst",
+    license="MIT, see LICENSE.rst",
     url="http://github.com/deanmalmgren/django-flux",
-    install_requires=[
-        'Django >= 1.2.5',
-        'python-twitter',
-        # 'fbconsole',
-        # 'mechanize',
-        # 'python-linkedin',
-    ],
+    install_requires=dependencies,
     packages=['flux'],
     install_package_data=True,
 )
