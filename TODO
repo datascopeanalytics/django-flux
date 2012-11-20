@@ -1,11 +1,8 @@
 v0.1
 
-* add some basic views to prepare template tags to easily pull
-   information into other views
+* add the js for modifying the template
 
-* add settings.FLUX_TIME_WINDOW environment variable to specify the
-   time window over which we should aggregate information for display
-   in the templates
+* fix issue with uneven bins 
 
 * add 0.1.0 tag and test that django-flux properly installs via pip
 
