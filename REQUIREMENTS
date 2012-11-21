@@ -1,0 +1,17 @@
+# to install virtualenv, run the following sequence of commands:
+#
+#     [shell]$ virtualenv --no-site-packages --setuptools env
+#     [shell]$ virtualenv env 
+#     [shell]$ ./env/bin/pip install -r virtualenv_requirements.txt
+#
+# to work within this virtualenv, simply run
+#
+#     [shell]$ source env/bin/activate
+#     (env)[shell]$ ./manage.py runserver
+
+django
+python-twitter
+feedparser
+# fbconsole
+# mechanize
+# python-linkedin

@@ -1,5 +1,5 @@
 
-include *.rst
+include REQUIREMENTS *.rst
 recursive-include flux *.py *.html *.js *.css *.png *.json
 
 # recursive-include docs/source *

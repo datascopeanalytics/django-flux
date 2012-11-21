@@ -9,7 +9,7 @@ from setuptools import find_packages
 
 # read in the dependencies from the virtualenv requirements file
 dependencies = []
-filename = os.path.join("example_project", "virtualenv_requirements.txt") 
+filename = "REQUIREMENTS"
 with open(filename, 'r') as stream:
     for line in stream:
         package = line.strip().split('#')[0]
