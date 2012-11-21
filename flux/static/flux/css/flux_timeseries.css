@@ -36,7 +36,9 @@
 }
 .bin_outer {
   float: left;
-  height: 50px;
+  height: 26px;
+  margin-top: 13px;
+  margin-bottom: 13px;
   position: relative;
 }
 .bin_inner {
