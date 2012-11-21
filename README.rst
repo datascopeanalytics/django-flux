@@ -74,3 +74,4 @@ Contribute!
 #. Edit, test, and share your code. See the `issues page
    <https://github.com/deanmalmgren/django-flux/issues>`_ for
    inspiration.
+

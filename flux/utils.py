@@ -18,14 +18,28 @@ class Bin(object):
     def __repr__(self):
         return '[%s, %s): %s' % (self.beg, self.end, self.count)
 
+    # CSS styling functions
     def _pct_str(self, val):
         return "%s%%" % (val*100)
 
-    def width_pct_str(self):
-        return self._pct_str(1.0/len(self.timeseries))
+    def _dict2css_str(self, d):
+        css_str = ''
+        for key, val in d.iteritems():
+            css_str += "%s: %s;" % (key, val)
+        return css_str
 
-    def height_pct_str(self):
-        return self._pct_str(float(self.count) / self.timeseries.max_count())
+    def inner_style(self):
+        h = float(self.count) / self.timeseries.max_count()
+        return self._dict2css_str({
+            "height": self._pct_str(h),
+            # "margin-top": "auto", #self._pct_str(1-h),
+        })
+
+    def outer_style(self):
+        w = 1.0/len(self.timeseries)
+        return self._dict2css_str({
+            "width": self._pct_str(w),
+        })
 
 class Timeseries(list):
 

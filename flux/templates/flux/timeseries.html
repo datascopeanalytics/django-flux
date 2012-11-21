@@ -3,17 +3,17 @@
 
   <div class="flux_icon">
     {% block flux_icon %}
-    <img alt="icon for {{account}}" 
-	 src="{{STATIC_URL}}flux/img/{{account.type}}.png" />
+    <img alt="icon for {{account}}"
+  	 src="{{STATIC_URL}}flux/img/{{account.type}}.png" />
     {% endblock flux_icon %}
   </div>
 
   <div class="flux_mean">
     {% block flux_mean %}
     <p class="{{account.type}}">
-      {{timeseries.mean|floatformat}} 
+      {{timeseries.mean|floatformat}}
       <span class="label">
-	{% include mean_label_template %}
+  	{% include mean_label_template %}
       </span>
     </p>
     {% endblock flux_mean %}
@@ -23,8 +23,8 @@
     {% block flux_timeseries %}
     <div class="timeseries">
       {% for bin in timeseries %}
-      <div class="bin_outer" style="width: {{bin.width_pct_str}};">
-	<div class="bin_inner" style="height: {{bin.height_pct_str}};">
+      <div class="bin_outer" style="{{bin.outer_style}}">
+	<div class="bin_inner" style="{{bin.inner_style}}">
 	</div>
       </div>
       {% endfor %}
