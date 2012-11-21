@@ -38,7 +38,7 @@ Quick start
 #. Use the ``flux_timeseries`` template tag on ``Account`` instances
    (``account`` below) in your templates::
 
-
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
 
     {% load flux %}
     {% flux_timeseries account %}
@@ -52,25 +52,6 @@ To have the feeds monitored be continuously updated, add the following
 line to your `crontab <http://en.wikipedia.org/wiki/Cron>`_::
 
     0 0 * * * /path/to/manage.py update_flux
-
-How it works
-============
-
-Most of these content streams (Twitter, RSS, etc) have open APIs that
-make it possible to access their data in real time. The tricky bit is
-that it is often slower to request this information from several
-different APIs than it is to make a single request to a single
-centralized server. So as to not decrease site performance,
-``flux`` provides the functionality to fetch and store this data
-locally.
-
-
-
-TODO: DESCRIBE MODELS
-
-TODO: DESCRIBE MANAGEMENT COMMANDS
-
-TODO: DESCRIBE TEMPLATE TAGS
 
 Contribute!
 ===========
