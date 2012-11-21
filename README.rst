@@ -29,13 +29,21 @@ Quick start
 #. Make sure the `admin is enabled
    <https://docs.djangoproject.com/en/dev/intro/tutorial02/#activate-the-admin-site>`_
    on your site and add accounts to monitor by visiting the admin page
-   of your site (likely http://localhost:8000/admin/flux/account/add)
+   of your site (e.g., http://localhost:8000/admin/flux/account/add)
 
-#. Run the `update_flux` management command::
+#. Run the ``update_flux`` management command::
 
     [shell]$ python manage.py update_flux
 
-#. TODO: UPDATE WHEN PRELIMINARY VIEW IS AVAILABLE
+#. Use the ``flux_timeseries`` template tag on ``Account`` instances
+   (``account`` below) in your templates::
+
+
+
+    {% load flux %}
+    {% flux_timeseries account %}
+
+#. Customize the styling and layout by altering the CSS, and content accordingly
 
 Production usage
 ================
@@ -55,6 +63,8 @@ different APIs than it is to make a single request to a single
 centralized server. So as to not decrease site performance,
 ``flux`` provides the functionality to fetch and store this data
 locally.
+
+
 
 TODO: DESCRIBE MODELS
 
