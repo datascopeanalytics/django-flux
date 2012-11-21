@@ -1,0 +1,8 @@
+.bin_outer {
+  float: left;
+  height: 20px;
+}
+
+.bin_inner {
+  background-color: red;
+}

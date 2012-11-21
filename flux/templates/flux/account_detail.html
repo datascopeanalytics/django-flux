@@ -1,9 +1,14 @@
 {% extends "flux/base.html" %}
 
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
+{% endblock css %}
+
 {% block content %}
+{{block.super}}
 
 {% load flux %}
-
 {% flux_timeseries account %}
 
 {% endblock content %}

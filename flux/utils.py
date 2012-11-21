@@ -5,7 +5,8 @@ class Bin(object):
     """Count the number of instances in the interval [beg, end)
     """
 
-    def __init__(self, beg, end):
+    def __init__(self, timeseries, beg, end):
+        self.timeseries = timeseries
         self.beg = beg
         self.end = end
         self.count = 0
@@ -16,6 +17,15 @@ class Bin(object):
 
     def __repr__(self):
         return '[%s, %s): %s' % (self.beg, self.end, self.count)
+
+    def _pct_str(self, val):
+        return "%s%%" % (val*100)
+
+    def width_pct_str(self):
+        return self._pct_str(1.0/len(self.timeseries))
+
+    def height_pct_str(self):
+        return self._pct_str(float(self.count) / self.timeseries.max_count())
 
 class Timeseries(list):
 
@@ -28,7 +38,7 @@ class Timeseries(list):
         beg = self.beg
         while beg<self.end:
             end = beg + settings.FLUX_BIN_SIZE
-            self.append(Bin(beg, end))
+            self.append(Bin(self, beg, end))
             beg = end
 
     # override the append method to call add_to_bin
@@ -59,3 +69,6 @@ class Timeseries(list):
         for bin in self:
             total += bin.count
         return total / len(self)
+
+    def max_count(self):
+        return max([bin.count for bin in self])
