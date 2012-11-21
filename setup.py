@@ -18,7 +18,7 @@ with open(filename, 'r') as stream:
 
 setup(
     name="django-flux",
-    version="0.1.0",
+    version="0.1.1",
     description="locally fetch, store, and present social media flux",
     long_description=open('README.rst').read(),
     author="Dean Malmgren",
