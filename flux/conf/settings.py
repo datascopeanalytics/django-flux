@@ -25,7 +25,9 @@ if not isinstance(FLUX_BIN_SIZE, datetime.timedelta):
     raise TypeError(msg)
 
 # make sure that FLUX_BIN_SIZE evenly divides FLUX_MAX_TIME_WINDOW,
-# otherwise we will end up with uneven bins
+# otherwise we will end up with uneven bins. NOTE: This requirement is
+# also enforced in Account.get_timeseries to make sure that timeseries
+# bins do not extend into the future.
 if FLUX_MAX_TIME_WINDOW.days % FLUX_BIN_SIZE.days != 0:
     msg = "FLUX_BIN_SIZE must evenly divide FLUX_MAX_TIME_WINDOW"
     raise ValueError(msg)
