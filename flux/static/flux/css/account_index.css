@@ -1,0 +1,13 @@
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+ul li {
+  padding: 0px;
+  margin: 0px;
+}
+
+ul li .flux_timeseries_container {
+  padding-bottom: 5px;
+}

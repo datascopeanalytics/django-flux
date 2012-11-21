@@ -1,11 +1,18 @@
 {% extends "flux/base.html" %}
 
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" href="{{STATIC_URL}}flux/css/account_index.css" />
+<link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
+{% endblock css %}
+
 {% block content %}
 <ul>
+{% load flux %}
   {% for account in accounts %}
-  <li><a href="{% url account_detail account.id %}">
-    {{account}}
-  </a></li>
+  <li>
+    {% flux_timeseries account %}
+  </li>
   {% endfor %}
 </ul>
 {% endblock content %}
