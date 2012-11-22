@@ -26,6 +26,10 @@ Quick start
 
     INSTALLED_APPS += ('flux', )
 
+#. Run ``syncdb`` to create the necessary tables::
+
+    [shell]$ python manage.py syncdb
+
 #. Make sure the `admin is enabled
    <https://docs.djangoproject.com/en/dev/intro/tutorial02/#activate-the-admin-site>`_
    on your site and add accounts to monitor by visiting the admin page

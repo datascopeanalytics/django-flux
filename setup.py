@@ -6,6 +6,7 @@ from setuptools import find_packages
 #   * http://guide.python-distribute.org/creation.html
 #   * http://bruno.im/2010/may/05/packaging-django-reusable-app/
 #   * http://stackoverflow.com/questions/5360873/how-do-i-package-a-python-application-to-make-it-pip-installable
+#   * http://blog.nyaruka.com/adding-a-django-app-to-pythons-cheese-shop-py
 
 # read in the dependencies from the virtualenv requirements file
 dependencies = []
@@ -18,7 +19,7 @@ with open(filename, 'r') as stream:
 
 setup(
     name="django-flux",
-    version="0.1.1",
+    version=__import__("flux").__version__,
     description="locally fetch, store, and present social media flux",
     long_description=open('README.rst').read(),
     author="Dean Malmgren",

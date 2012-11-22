@@ -1,6 +1,13 @@
-
-include REQUIREMENTS *.rst
-recursive-include flux *.py *.html *.js *.css *.png *.json
-
-# recursive-include docs/source *
-# include docs/Makefile
+include REQUIREMENTS 
+include *.rst
+recursive-include flux/static *
+recursive-include flux/templates *
+recursive-include flux/templatetags *
+recursive-include flux/conf *
+recursive-include flux/fixtures *
+recursive-include flux/management *
+recursive-include flux/management/commands *
+recursive-include flux *
+recursive-exclude * *.py[co]
+recursive-exclude * *~ 
+recursive-exclude * *.orig
