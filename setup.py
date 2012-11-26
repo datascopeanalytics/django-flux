@@ -8,6 +8,20 @@ from setuptools import find_packages
 #   * http://stackoverflow.com/questions/5360873/how-do-i-package-a-python-application-to-make-it-pip-installable
 #   * http://blog.nyaruka.com/adding-a-django-app-to-pythons-cheese-shop-py
 
+def fullsplit(path, result=None):
+    """
+    Split a pathname into components (the opposite of os.path.join) in a
+    platform-neutral way.
+    """
+    if result is None:
+        result = []
+    head, tail = os.path.split(path)
+    if head == '':
+        return [tail] + result
+    if head == path:
+        return result
+    return fullsplit(head, [tail] + result)
+
 # read in the dependencies from the virtualenv requirements file
 dependencies = []
 filename = "REQUIREMENTS"
@@ -16,6 +30,19 @@ with open(filename, 'r') as stream:
         package = line.strip().split('#')[0]
         if package:
             dependencies.append(package)
+
+# get a list of all the packages to include in scr_dir
+src_dir = 'flux'
+packages, data_files = [], []
+for dirpath, dirnames, filenames in os.walk(src_dir):
+    for i, dirname in enumerate(dirnames):
+        if dirname.startswith('.') or dirname == '__pycache__':
+            del dirnames[i]
+    if '__init__.py' in filenames:
+        packages.append('.'.join(fullsplit(dirpath)))
+    elif filenames:
+        data_files.append([dirpath, 
+                           [os.path.join(dirpath, f) for f in filenames]])
 
 setup(
     name="django-flux",
@@ -27,6 +54,7 @@ setup(
     license="MIT, see LICENSE.rst",
     url="http://github.com/deanmalmgren/django-flux",
     install_requires=dependencies,
-    packages=['flux'],
-    install_package_data=True,
+    packages=packages,
+    # install_package_data=True,
+    data_files=data_files,
 )
