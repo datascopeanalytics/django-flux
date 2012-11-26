@@ -54,6 +54,9 @@ class Account(models.Model):
         end = datetime.date.today() 
         beg = end - settings.FLUX_MAX_TIME_WINDOW
         oldest_date = self.flux_set.aggregate(models.Min("date"))['date__min']
+        if oldest_date is None:
+            msg = "need to add accounts and run update_flux management command"
+            raise TypeError(msg)
         dt = beg - oldest_date
         mod_dt = dt.days % settings.FLUX_BIN_SIZE.days
         dt = settings.FLUX_BIN_SIZE - datetime.timedelta(days=mod_dt)
