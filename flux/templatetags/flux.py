@@ -13,10 +13,15 @@ def flux_timeseries(context, account):
     for details.
     """
 
-    return {
-        "STATIC_URL": context["STATIC_URL"],
+    d = {
         "MEDIA_URL": context["MEDIA_URL"],
         "account": account,
         "timeseries": account.get_timeseries(),
         "mean_label_template": account.get_mean_label_template(),
     }
+    try:
+        d["STATIC_URL"] = context["STATIC_URL"]
+    except KeyError:
+        pass
+
+    return d
