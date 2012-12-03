@@ -1,0 +1,13 @@
+# ignore junk files
+*~
+*.orig
+*.pyc
+
+# ignore virtualenv, testing db, and static media directory
+example_project/env/
+example_project/*.db
+example_project/static/
+
+# ignore distribution builds for pypi
+django_flux.egg-info/
+dist/
