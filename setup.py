@@ -31,9 +31,12 @@ with open(filename, 'r') as stream:
         if package:
             dependencies.append(package)
 
-# get a list of all the packages to include in scr_dir
+# get a list of all the packages to include in scr_dir. inspiration
+# from the django setup.py
 src_dir = 'flux'
-packages, data_files = [], []
+packages = []
+#data_files = []
+package_data = {src_dir:[]}
 for dirpath, dirnames, filenames in os.walk(src_dir):
     for i, dirname in enumerate(dirnames):
         if dirname.startswith('.') or dirname == '__pycache__':
@@ -41,8 +44,10 @@ for dirpath, dirnames, filenames in os.walk(src_dir):
     if '__init__.py' in filenames:
         packages.append('.'.join(fullsplit(dirpath)))
     elif filenames:
-        data_files.append([dirpath, 
-                           [os.path.join(dirpath, f) for f in filenames]])
+        # data_files.append([dirpath, 
+        #                    [os.path.join(dirpath, f) for f in filenames]])
+        package_data[src_dir].extend([os.path.join(dirpath, f) 
+                                      for f in filenames])
 
 setup(
     name="django-flux",
@@ -53,8 +58,12 @@ setup(
     author_email="dean.malmgren@datascopeanalytics.com",
     license="MIT, see LICENSE.rst",
     url="http://github.com/deanmalmgren/django-flux",
+    download_url="http://github.com/deanmalmgren/django-flux/archives/master",
     install_requires=dependencies,
     packages=packages,
-    # install_package_data=True,
-    data_files=data_files,
+    package_data=package_data,
+
+    # # data files are installed on the system path. for details see
+    # # http://docs.python.org/2/distutils/setupscript.html#installing-additional-files
+    # data_files=data_files,
 )

@@ -5,9 +5,6 @@ include LICENSE.rst
 recursive-include flux/static *
 recursive-include flux/fixtures *
 recursive-include flux/templates *
-#recursive-include flux/management *
-#recursive-include flux/management/commands *
-#recursive-include flux *
 recursive-exclude * *.py[co]
 recursive-exclude * *~ 
 recursive-exclude * *.orig
