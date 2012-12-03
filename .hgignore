@@ -1,5 +1,3 @@
-syntax: glob
-
 # ignore junk files
 *~
 *.orig
