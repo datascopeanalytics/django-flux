@@ -1,3 +1,6 @@
+# this is the combined .hgignore and .gitignore file. 
+syntax: glob
+
 # ignore junk files
 *~
 *.orig
