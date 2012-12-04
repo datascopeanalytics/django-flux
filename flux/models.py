@@ -87,6 +87,14 @@ class Account(models.Model):
             "mean_label_%s.html" % self.type,
         )
 
+    def follow_url(self):
+        if self.type=="rss":
+            return self.name
+        elif self.type=="twitter":
+            return "http://twitter.com/%s" % self.name
+        else:
+            raise NotImplementedError("unknown Account.type='%s'" % self.type)
+
 class Flux(models.Model):
     """Model for storing social activity flux for various data feeds.
     """

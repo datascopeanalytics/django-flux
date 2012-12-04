@@ -1,13 +1,14 @@
 <div id="flux_timeseries_{{account.id}}" class="flux_timeseries_container">
   {% block flux_timeseries_container %}
-
   <div class="flux_icon">
     {% block flux_icon %}
-    <img alt="icon for {{account}}"
-  	 src="{{account.icon.url}}" />
+    <a href="{{account.follow_url}}">
+      <img alt="icon for {{account}}"
+  	   src="{{account.icon.url}}" />
+    </a>
     {% endblock flux_icon %}
   </div>
-
+  
   <div class="flux_mean">
     {% block flux_mean %}
     <p class="{{account.type}}">
@@ -18,7 +19,7 @@
     </p>
     {% endblock flux_mean %}
   </div>
-
+  
   <div class="flux_timeseries">
     {% block flux_timeseries %}
     <div class="timeseries">
@@ -31,7 +32,6 @@
     </div>
     {% endblock flux_timeseries %}
   </div>
-
   <div class="clear"></div>
   {% endblock flux_timeseries_container %}
 </div>
