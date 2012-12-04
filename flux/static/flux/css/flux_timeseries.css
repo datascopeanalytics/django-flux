@@ -1,6 +1,10 @@
 
 // styling for the flux_icon block
-.flux_icon img, .flux_icon {
+.flux_icon {
+  width: 50px;
+  height: 50px;
+}
+.flux_icon img {
   width: 50px;
   height: 50px;
 }

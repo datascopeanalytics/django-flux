@@ -1,3 +1,4 @@
+import os
 import datetime
 
 from django.conf import settings
@@ -31,3 +32,11 @@ if not isinstance(FLUX_BIN_SIZE, datetime.timedelta):
 if FLUX_MAX_TIME_WINDOW.days % FLUX_BIN_SIZE.days != 0:
     msg = "FLUX_BIN_SIZE must evenly divide FLUX_MAX_TIME_WINDOW"
     raise ValueError(msg)
+
+
+# this settings variable specifies the location to which the icon
+# images are uploaded for the Account.icon
+FLUX_UPLOAD_TO = getattr(
+    settings, "FLUX_UPLOAD_TO",
+    os.path.join("uploads", "flux"),
+)

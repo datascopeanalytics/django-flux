@@ -10,6 +10,7 @@ syntax: glob
 example_project/env/
 example_project/*.db
 example_project/static/
+example_project/uploads/
 
 # ignore distribution builds for pypi
 django_flux.egg-info/

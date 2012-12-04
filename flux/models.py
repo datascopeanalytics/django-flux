@@ -36,6 +36,12 @@ class Account(models.Model):
         db_index=True,
         help_text="Enter the name of the account to track",
     )
+    icon = models.FileField(
+        upload_to=settings.FLUX_UPLOAD_TO,
+        max_length=255,
+        blank=True,
+        help_text="Icon for this account (square, 50x50 preferred)",
+    )
     other = models.TextField(
         help_text="Other data associated with this account. JSON format.",
         blank=True,
