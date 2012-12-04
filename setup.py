@@ -62,6 +62,7 @@ setup(
     install_requires=dependencies,
     packages=packages,
     package_data=package_data,
+    include_package_data=True,
 
     # # data files are installed on the system path. for details see
     # # http://docs.python.org/2/distutils/setupscript.html#installing-additional-files
