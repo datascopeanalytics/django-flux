@@ -80,7 +80,6 @@ and you should see something like this:
    :alt: labelled bars in the timeseries view
    :align: center
 
-
 Sparklines
 ----------
 
@@ -98,7 +97,11 @@ Optionally include `sparklines
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="{{STATIC_URL}}flux/js/sparklines.js"></script>
 
+and you should see something like this:
 
+.. image:: https://github.com/deanmalmgren/django-flux/raw/master/docs/sparkline.png
+   :alt: sparkline view
+   :align: center
 
 Production usage
 ================

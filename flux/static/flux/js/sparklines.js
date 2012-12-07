@@ -48,4 +48,9 @@ $(document).ready(function () {
 	    d3.select(this).append("svg:path").attr("d", line(data[k]));
 
     });
+
+    // change the display to show the timeseries sparklines
+    d3.selectAll(".flux_timeseries_container .flux_timeseries")
+	.style("display", "inline");
+
 });

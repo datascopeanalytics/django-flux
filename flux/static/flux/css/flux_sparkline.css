@@ -1,12 +1,11 @@
 
-// need to hide the blocks to avoid flickering
+/* need to hide the blocks to avoid flickering */
 .flux_timeseries {
   display: none;
 }
 
-// style the sparkline
+/* style the sparkline */
 .flux_timeseries svg.timeseries.sparkline {
-  display: block;
   width: 90px;
   height: 26px;
   margin-top: 12px;
