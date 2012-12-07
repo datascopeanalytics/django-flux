@@ -25,7 +25,11 @@
     <div class="timeseries">
       {% for bin in timeseries %}
       <div class="bin_outer" style="{{bin.outer_style}}">
-	<div class="bin_inner" style="{{bin.inner_style}}">
+	<div class="bin_inner" 
+	     data-count="{{bin.count}}" 
+	     data-beg="{{bin.beg}}" 
+	     data-end="{{bin.end}}" 
+	     style="{{bin.inner_style}}">
 	</div>
       </div>
       {% endfor %}

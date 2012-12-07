@@ -33,7 +33,6 @@
 }
 
 // styling for the flux_timeseries block
-
 .flux_timeseries .timeseries {
   width: 100px;
   height: 50px;
@@ -43,8 +42,8 @@
 .bin_outer {
   float: left;
   height: 26px;
-  margin-top: 13px;
-  margin-bottom: 13px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   position: relative;
 }
 .bin_inner {
@@ -56,7 +55,20 @@
 
 .flux_timeseries {
   width: 100px;
+  height: 50px;
   float: left;
+}
+
+.flux_timeseries svg.timeseries.sparkline {
+  width: 100px;
+  height: 26px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.sparkline path {
+  stroke: #bbb;
+  stroke-width: 2;
+  fill: none;
 }
 
 .flux_timeseries_container .clear {
