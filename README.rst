@@ -55,6 +55,20 @@ Options
 Interactivity on mouseover for bars
 -----------------------------------
 
+Optionally include labels for the bars with `d3.js <http://d3js.org>`_
+by including the following in your templates::
+
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_bar_mouseover_labels.css" />
+
+    {% load flux %}
+    {% flux_timeseries account %}
+
+    <script src="//d3js.org/d3.v2.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="{{STATIC_URL}}flux/js/bar_mouseover_labels.js"></script>
+
+
 Sparklines
 ----------
 
@@ -64,6 +78,9 @@ Optionally include `sparklines
   
     <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
     <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_sparkline.css" />
+
+    {% load flux %}
+    {% flux_timeseries account %}
 
     <script src="//d3js.org/d3.v2.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

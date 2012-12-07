@@ -1,10 +1,6 @@
 
-// styling for the flux_icon block
-.flux_icon {
-  width: 50px;
-  height: 50px;
-}
-.flux_icon img {
+/* styling for the flux_icon block */
+.flux_icon, .flux_icon img {
   width: 50px;
   height: 50px;
 }
@@ -12,11 +8,9 @@
   float: left;
 }
 
-// styling for the flux_mean block
+/* styling for the flux_mean block */
 .flux_mean p {
   width: 90px;
-}
-.flux_mean p {
   font-size: 20px;
   margin-top: 13px;
   margin-bottom: 13px;
@@ -32,12 +26,16 @@
   padding-right: 5px;
 }
 
-// styling for the flux_timeseries block
+/* styling for the flux_timeseries block */
+.flux_timeseries {
+  float: left;
+}
 .flux_timeseries .timeseries {
   width: 100px;
   height: 50px;
   margin: 0px;
   padding: 0px;
+  position: relative;
 }
 .bin_outer {
   float: left;
@@ -51,12 +49,7 @@
   position: absolute;
   bottom: 0px;
   width: 100%;
-}
-
-.flux_timeseries {
-  width: 100px;
-  height: 50px;
-  float: left;
+  z-index: -1;
 }
 
 .flux_timeseries_container .clear {

@@ -1,0 +1,12 @@
+/* style the hover info labels */
+.flux_timeseries .timeseries p.hover_info {
+  position: absolute;
+  top: 10px;
+  margin: 0;
+  text-align: center;
+  width: 100px;
+  color: #333;
+  font-size: 10px;
+  font-family: Helvetica, Arial, sans;
+}
+
