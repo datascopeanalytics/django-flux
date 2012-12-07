@@ -42,7 +42,7 @@ Quick start
 #. Use the ``flux_timeseries`` template tag on ``Account`` instances
    (``account`` below) in your templates::
 
-    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/timeseries.css" />
 
     {% load flux %}
     {% flux_timeseries account %}
@@ -64,8 +64,8 @@ Interactivity on mouseover for bars
 Optionally include labels for the bars with `d3.js <http://d3js.org>`_
 by including the following in your templates::
 
-    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
-    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_bar_mouseover_labels.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/timeseries.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/bar_mouseover_labels.css" />
 
     {% load flux %}
     {% flux_timeseries account %}
@@ -87,8 +87,8 @@ Optionally include `sparklines
 <http://en.wikipedia.org/wiki/Sparkline>`_ with `d3.js
 <http://d3js.org>`_ by including the following in your templates::
   
-    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
-    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_sparkline.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/timeseries.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/sparkline.css" />
 
     {% load flux %}
     {% flux_timeseries account %}
