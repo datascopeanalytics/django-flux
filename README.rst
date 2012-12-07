@@ -118,7 +118,7 @@ Contribute!
    <https://github.com/deanmalmgren/django-flux>`_
 
 #. Setup the virtualenv by following the instructions in
-   example_project/virtualenv_requirements.txt
+   `example_project/virtualenv_requirements.txt <https://raw.github.com/deanmalmgren/django-flux/master/example_project/virtualenv_requirements.txt>`_
 
 #. Edit, test, and share your code. See the `issues page
    <https://github.com/deanmalmgren/django-flux/issues>`_ for
