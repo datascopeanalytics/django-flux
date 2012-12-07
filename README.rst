@@ -47,24 +47,29 @@ Quick start
     {% load flux %}
     {% flux_timeseries account %}
 
-#. Optionally include `sparklines
-   <http://en.wikipedia.org/wiki/Sparkline>`_ with `d3.js
-   <http://d3js.org>`_ by including the following in your templates::
+#. Customize the styling and layout by altering the CSS, and content accordingly
 
-    <style>
-      .flux_timeseries div.timeseries {
-        display: none; // hide the binned divs to avoid flicker.
-      }
-      .flux_timeseries svg.timeseries.sparkline {
-        display: block; // show svg to override previous display: none.
-      }
-    </style>
+Options
+=======
+
+Interactivity on mouseover for bars
+-----------------------------------
+
+Sparklines
+----------
+
+Optionally include `sparklines
+<http://en.wikipedia.org/wiki/Sparkline>`_ with `d3.js
+<http://d3js.org>`_ by including the following in your templates::
+  
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_timeseries.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/flux_sparkline.css" />
 
     <script src="//d3js.org/d3.v2.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="{{STATIC_URL}}flux/js/sparklines.js"></script>
 
-#. Customize the styling and layout by altering the CSS, and content accordingly
+
 
 Production usage
 ================

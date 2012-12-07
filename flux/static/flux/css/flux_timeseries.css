@@ -59,19 +59,6 @@
   float: left;
 }
 
-.flux_timeseries svg.timeseries.sparkline {
-  display: block;
-  width: 100px;
-  height: 26px;
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-.sparkline path {
-  stroke: #bbb;
-  stroke-width: 2;
-  fill: none;
-}
-
 .flux_timeseries_container .clear {
   clear: both;
   padding: 0;
