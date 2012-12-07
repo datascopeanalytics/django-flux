@@ -7,7 +7,7 @@
 // style the sparkline
 .flux_timeseries svg.timeseries.sparkline {
   display: block;
-  width: 100px;
+  width: 90px;
   height: 26px;
   margin-top: 12px;
   margin-bottom: 12px;

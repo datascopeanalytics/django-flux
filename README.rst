@@ -47,6 +47,12 @@ Quick start
     {% load flux %}
     {% flux_timeseries account %}
 
+   and you should see something like this:
+
+   .. image:: basic_view.png
+      :alt: default flux timeseries view
+      :align: center
+
 #. Customize the styling and layout by altering the CSS, and content accordingly
 
 Options
@@ -67,6 +73,12 @@ by including the following in your templates::
     <script src="//d3js.org/d3.v2.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="{{STATIC_URL}}flux/js/bar_mouseover_labels.js"></script>
+
+and you should see something like this:
+
+.. image:: bar_labelled.png
+   :alt: labelled bars in the timeseries view
+   :align: center
 
 
 Sparklines
