@@ -13,12 +13,12 @@ $(document).ready(function () {
 	    data.push([]);
 	    d3.select(this).selectAll(".bin_inner").datum(function () {
 		data[data.length-1].push(Number(this.dataset["count"]));
-	    });
 	});
+    });
 
     // remove all of the existing timeseries data
     d3.selectAll(".flux_timeseries_container .flux_timeseries .timeseries")
-	.remove();
+    	.remove();
     
     // add the timeseries spark line to the data. inspiration from
     // http://bl.ocks.org/1133472
@@ -47,24 +47,5 @@ $(document).ready(function () {
 
 	    d3.select(this).append("svg:path").attr("d", line(data[k]));
 
-	});
-    	// .data(
-
-	// .append("rect")
-	// .attr("height", function (d, j){
-	//     return d.count;
-	// })
-
-	// .each(function (d, i){
-	//     d3.select(this).append("svg")
-	// 	.attr("class", "sparkline")
-	// 	.data(data[i])
-	// 	.enter()
-	// 	.append("rect")
-	// 	.attr("height", function (d, j){
-	// 	    return d.count;
-	// 	})
-	// })
-
-
+    });
 });
