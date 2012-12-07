@@ -60,6 +60,7 @@
 }
 
 .flux_timeseries svg.timeseries.sparkline {
+  display: block;
   width: 100px;
   height: 26px;
   margin-top: 12px;

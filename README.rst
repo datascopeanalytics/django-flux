@@ -51,6 +51,15 @@ Quick start
    <http://en.wikipedia.org/wiki/Sparkline>`_ with `d3.js
    <http://d3js.org>`_ by including the following in your templates::
 
+    <style>
+      .flux_timeseries div.timeseries {
+        display: none; // hide the binned divs to avoid flicker.
+      }
+      .flux_timeseries svg.timeseries.sparkline {
+        display: block; // show svg to override previous display: none.
+      }
+    </style>
+
     <script src="//d3js.org/d3.v2.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="{{STATIC_URL}}flux/js/sparklines.js"></script>
