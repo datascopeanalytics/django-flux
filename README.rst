@@ -49,7 +49,7 @@ Quick start
 
    and you should see something like this:
 
-   .. image:: basic_view.png
+   .. image:: https://github.com/deanmalmgren/django-flux/raw/master/docs/basic_view.png
       :alt: default flux timeseries view
       :align: center
 
@@ -76,7 +76,7 @@ by including the following in your templates::
 
 and you should see something like this:
 
-.. image:: bar_labelled.png
+.. image:: https://github.com/deanmalmgren/django-flux/raw/master/docs/bar_labelled.png
    :alt: labelled bars in the timeseries view
    :align: center
 
