@@ -9,4 +9,6 @@
   font-size: 10px;
   font-family: Helvetica, Arial, sans;
 }
-
+.flux_timeseries .timeseries .bin_outer:hover .bin_inner {
+  background-color: #333;
+}
