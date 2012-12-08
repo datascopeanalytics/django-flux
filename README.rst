@@ -55,10 +55,9 @@ Quick start
       :alt: default flux timeseries view
       :align: center
 
-#. Customize the styling and layout by altering the CSS, and content accordingly
-
-Options
-=======
+#. Customize the styling and layout by altering the CSS, and content
+   accordingly or by taking advantage of any of the other ways of
+   displaying the flux information:
 
 Labels on mouseover with bars
 -----------------------------
@@ -108,10 +107,11 @@ and you should see something like this:
 Production usage
 ================
 
-To have the feeds monitored be continuously updated, add the following
-line to your `crontab <http://en.wikipedia.org/wiki/Cron>`_::
+To have the Accounts monitored be continuously updated, add the
+following line to your `crontab <http://en.wikipedia.org/wiki/Cron>`_
+on your production server::
 
-    0 0 * * * /path/to/manage.py update_flux
+    0 0 * * * python /path/to/manage.py update_flux
 
 Account configuration
 =====================
