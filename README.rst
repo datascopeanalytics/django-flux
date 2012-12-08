@@ -12,6 +12,7 @@ content will be useful for you. Currently, ``flux`` supports:
 
 * Twitter via `python-twitter <https://github.com/bear/python-twitter>`_
 * RSS via `feedparser <http://packages.python.org/feedparser/>`_
+* Facebook via `fbconsole <https://github.com/facebook/fbconsole>`_
 
 Quick start
 ===========
