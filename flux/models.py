@@ -54,24 +54,17 @@ class Account(models.Model):
         """Get the timeseries specified for this account.
         """
 
-        # determine the end points of the time series.  round up the
-        # oldest_date to ensure that FLUX_MAX_TIME_WINDOW is divisible
-        # by FLUX_BIN_SIZE
+        # determine the end points of the time series. by fixing the
+        # time window to be precisely FLUX_MAX_TIME_WINDOW large, it
+        # makes it such that all Accounts shown on the same page have
+        # the same number of bins, which is aesthetically nicer.
         end = datetime.date.today() 
         beg = end - settings.FLUX_MAX_TIME_WINDOW
-        oldest_date = self.flux_set.aggregate(models.Min("date"))['date__min']
-        if oldest_date is None:
-            msg = "need to add accounts and run update_flux management command"
-            raise TypeError(msg)
-        dt = beg - oldest_date
-        mod_dt = dt.days % settings.FLUX_BIN_SIZE.days
-        dt = settings.FLUX_BIN_SIZE - datetime.timedelta(days=mod_dt)
-        oldest_date -= dt
 
         # aggregate all of the time points into bins of width
         # settings.FLUX_MAX_TIME_WINDOW
         timeseries = utils.Timeseries(
-            beg=max(beg, oldest_date),
+            beg=beg,
             end=end,
         )
         for flux in self.flux_set.filter(date__gte=beg, date__lt=end)\
