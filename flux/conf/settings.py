@@ -35,6 +35,9 @@ FLUX_RSS_MEAN_LABEL = getattr(
 FLUX_FACEBOOK_MEAN_LABEL = getattr(
     settings, "FLUX_FACEBOOK_MEAN_LABEL", "updates / week",
 )
+FLUX_LINKEDIN_MEAN_LABEL = getattr(
+    settings, "FLUX_LINKEDIN_MEAN_LABEL", "updates / week",
+)
 
 # make sure that FLUX_BIN_SIZE evenly divides FLUX_MAX_TIME_WINDOW,
 # otherwise we will end up with uneven bins. NOTE: This requirement is

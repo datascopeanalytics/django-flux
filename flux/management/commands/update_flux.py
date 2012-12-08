@@ -9,6 +9,9 @@ import cookielib
 import urllib
 import urlparse
 import time
+import oauth2 as oauth
+import httplib2
+import os
 
 import twitter
 import feedparser
@@ -40,6 +43,10 @@ class Command(BaseCommand):
         optparse.make_option(
             "--exclude-facebook", dest="update_facebook", action="store_false", 
             default=True, help="exclude facebook?"
+        ),
+        optparse.make_option(
+            "--exclude-linkedin", dest="update_linkedin", action="store_false", 
+            default=True, help="exclude linkedin?"
         ),
         optparse.make_option(
             "-q", "--quiet", dest="quiet", action="store_true", default=False, 
@@ -169,7 +176,6 @@ class Command(BaseCommand):
         programmatic login to the facebook OAuth. Helpful resources:
 
         http://developers.facebook.com/docs/authentication/server-side/
-
         """
 
         for account in models.Account.objects.filter(type__exact="facebook"):
@@ -259,6 +265,54 @@ class Command(BaseCommand):
             # insert data into the database
             self.update_db(account, counter)
 
+    def update_linkedin(self):
+        """Helpful links in setting this up
+        https://developer.linkedin.com/documents/quick-start-guide
+        """
+
+        for account in models.Account.objects.filter(type__exact="linkedin"):
+            other = json.loads(account.other)
+
+            try:
+                api_key = other["api_key"]
+                api_secret = other["api_secret"]
+                token = other["token"]
+                secret = other["secret"]
+            except KeyError:
+                msg = "every linkedin Account must specify an "
+                msg += "api_key, api_secret, token, and secret "
+                msg += "in the `other` attribute json"
+                raise KeyError(msg)
+
+            # Use your API key and secret to instantiate consumer object
+            consumer = oauth.Consumer(api_key, api_secret)
+
+            # Use your developer token and secret to instantiate
+            # access token object
+            access_token = oauth.Token(
+                key=token,
+                secret=secret,
+            )
+
+            client = oauth.Client(consumer, access_token)
+
+            # Make call to LinkedIn to retrieve your own profile
+            url = "http://api.linkedin.com/v1/companies/%s=%s/updates"%(
+                "universal-name",
+                account.name, 
+            )
+            response, content = client.request(url+"?format=json", "GET")
+            result = json.loads(content)
+            
+            # aggregate status count by date
+            counter = Counter()
+            for status in result["values"]:
+                t = datetime.datetime.fromtimestamp(status['timestamp']/1000.)
+                counter[t.date()] += 1
+
+            # insert data into the database
+            self.update_db(account, counter)
+
     def handle(self, *args, **kwargs):
         self.options = kwargs
         if self.options["update_twitter"]:
@@ -267,5 +321,7 @@ class Command(BaseCommand):
             self.update_rss()
         if self.options["update_facebook"]:
             self.update_facebook()
+        if self.options["update_linkedin"]:
+            self.update_linkedin()
 
             

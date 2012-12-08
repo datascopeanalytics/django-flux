@@ -19,10 +19,10 @@ class Account(models.Model):
         ("twitter", "Twitter"),
         ("rss", "RSS"),
         ("facebook", "Facebook"),
+        ("linkedin", "LinkedIn"),
 
         # # FUTURE
         # ("google+", "Google+"),
-        # ("linkedin", "LinkedIn"),
     )
 
     type = models.CharField(
@@ -45,7 +45,8 @@ class Account(models.Model):
     other = models.TextField(
         help_text="Other data associated with this account. JSON format."+\
             " Facebook requires app_id, client_secret, scope, email,"+\
-            " and password.",
+            " and password. LinkedIn requires api_key, api_secret, token,"+\
+            " and secret.",
         blank=True,
     )
 
@@ -86,6 +87,8 @@ class Account(models.Model):
             return "http://twitter.com/%s" % self.name
         elif self.type=="facebook":
             return "http://facebook.com/%s" % self.name
+        elif self.type=="linkedin":
+            return "http://linkedin.com/company/%s" % self.name
         else:
             raise NotImplementedError("unknown Account.type='%s'" % self.type)
 
