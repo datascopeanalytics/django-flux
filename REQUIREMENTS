@@ -11,6 +11,7 @@
 
 django
 python-twitter
+python-dateutil
 feedparser
 fbconsole
 mechanize

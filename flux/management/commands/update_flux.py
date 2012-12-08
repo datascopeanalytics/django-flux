@@ -14,6 +14,7 @@ import httplib2
 import os
 
 import twitter
+import dateutil.parser
 import feedparser
 import mechanize
 import fbconsole
@@ -117,17 +118,11 @@ class Command(BaseCommand):
         
             # parse all of the dates. 
             #
-            # NOTE: this is not properly parsing out the timezone
-            # information. %z directive doesn't work? at the end of
-            # the day, it doesn't really matter because it will make
-            # the same mistake consistenly, but it might be nice to
-            # fix at some point
+            # NOTE: this uses python-dateutil instead of datetime to
+            # properly handle the timezone information
             counter = Counter()
-            fmt_str = "%a, %d %b %Y %H:%M:%S %z"
-            fmt_str = ' '.join(fmt_str.split()[:-1]) # %z does not work
             for item in items:
-                t_str = ' '.join(item['published'].split()[:-1])
-                t = datetime.datetime.strptime(t_str, fmt_str)
+                t = dateutil.parser.parse(item['published']).date()
                 counter[t.date()] += 1
 
             # insert data into the database
