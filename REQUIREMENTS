@@ -12,6 +12,6 @@
 django
 python-twitter
 feedparser
-# fbconsole
-# mechanize
+fbconsole
+mechanize
 # python-linkedin

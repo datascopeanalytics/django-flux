@@ -18,9 +18,9 @@ class Account(models.Model):
     TYPES = (
         ("twitter", "Twitter"),
         ("rss", "RSS"),
+        ("facebook", "Facebook"),
 
         # # FUTURE
-        # ("facebook", "Facebook"),
         # ("google+", "Google+"),
         # ("linkedin", "LinkedIn"),
     )
@@ -43,7 +43,9 @@ class Account(models.Model):
         help_text="Icon for this account (square, 50x50 preferred)",
     )
     other = models.TextField(
-        help_text="Other data associated with this account. JSON format.",
+        help_text="Other data associated with this account. JSON format."+\
+            " Facebook requires app_id, client_secret, scope, email,"+\
+            " and password.",
         blank=True,
     )
 
@@ -82,6 +84,8 @@ class Account(models.Model):
             return self.name
         elif self.type=="twitter":
             return "http://twitter.com/%s" % self.name
+        elif self.type=="facebook":
+            return "http://facebook.com/%s" % self.name
         else:
             raise NotImplementedError("unknown Account.type='%s'" % self.type)
 
