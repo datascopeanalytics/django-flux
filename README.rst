@@ -113,6 +113,67 @@ line to your `crontab <http://en.wikipedia.org/wiki/Cron>`_::
 
     0 0 * * * /path/to/manage.py update_flux
 
+Account configuration
+=====================
+
+Account.type="twitter"
+----------------------
+
+Account.name is the Twitter username (*e.g.*, for
+http://twitter.com/DsAtweet, Account.name="DsAtweet").
+
+No additional information is needed to access Twitter Accounts and
+Account.other is ignored.
+
+Account.type="rss"
+------------------
+
+Account.name is the full URL of the RSS feed you want to
+track (*e.g.*, for http://datascopeanalytics.com/rss/,
+Account.name="http://datascopeanalytics.com/rss/").
+
+No additional information is needed to access Twitter Accounts and
+Account.other is ignored.
+
+Account.type="facebook"
+-----------------------
+
+Account.name is the name of the Facebook page that you want to track
+(*e.g.*, for http://facebook.com/datascopeanalytics,
+Account.name="datascopeanalytics")
+
+The Account.other JSON must also include several attributes in order
+to authenticate to the `Facebook API
+<http://developers.facebook.com/>`_ using `fbconsole
+<https://github.com/facebook/fbconsole>`_ with something like::
+
+    {
+        "app_id":"123456789012345",                          // [0-9]+
+        "client_secret": "1234567890abcdef1234567890abcdef", // [0-9a-f]+
+        "scope": ["read_stream"], 
+        "email":"facebook.email@here.com", 
+        "password": "this.is.your.facebook.password"
+    }
+
+Account.type="linkedin"
+-----------------------
+
+Account.name is the name of the LinkedIn company page that you want to
+track (*e.g.*, for http://linkedin.com/company/datascope-analytics-llc,
+Account.name="datascope-analytics-llc")
+
+The Account.other JSON must also include several attributes in order
+to authenticate to the `LinkedIn API
+<https://developer.linkedin.com/documents/quick-start-guide>`_ with
+something like::
+
+    {
+        "api_key": "1234567890ab",                      // [0-9a-f]+
+        "api_secret": "1234567890ABCDEF",               // [0-9a-zA-Z]+
+        "token":"12345678-90ab-cdef-1234-567890abcdef", // [0-9a-f\-]+
+        "secret":"12345678-90ab-cdef-1234-567890abcdef" // [0-9a-f\-]+
+    }
+
 Contribute!
 ===========
 
@@ -124,5 +185,5 @@ Contribute!
 
 #. Edit, test, and share your code. See the `issues page
    <https://github.com/deanmalmgren/django-flux/issues>`_ for
-   inspiration.
+   inspiration and to coordinate with the community.
 
