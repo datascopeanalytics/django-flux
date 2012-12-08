@@ -14,7 +14,7 @@
     <p class="{{account.type}}">
       {{timeseries.mean|floatformat}}
       <span class="label">
-  	{% include mean_label_template %}
+	{{account.get_mean_label}}
       </span>
     </p>
     {% endblock flux_mean %}

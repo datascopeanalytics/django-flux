@@ -25,6 +25,14 @@ if not isinstance(FLUX_BIN_SIZE, datetime.timedelta):
     msg = 'FLUX_BIN_SIZE must be a datetime.timedelta object'
     raise TypeError(msg)
 
+# specify a bunch of labels for flux account types
+FLUX_TWITTER_MEAN_LABEL = getattr(
+    settings, "FLUX_TWITTER_MEAN_LABEL", "tweets / week",
+)
+FLUX_RSS_MEAN_LABEL = getattr(
+    settings, "FLUX_RSS_MEAN_LABEL", "posts / week",
+)
+
 # make sure that FLUX_BIN_SIZE evenly divides FLUX_MAX_TIME_WINDOW,
 # otherwise we will end up with uneven bins. NOTE: This requirement is
 # also enforced in Account.get_timeseries to make sure that timeseries
@@ -40,3 +48,4 @@ FLUX_UPLOAD_TO = getattr(
     settings, "FLUX_UPLOAD_TO",
     os.path.join("uploads", "flux"),
 )
+

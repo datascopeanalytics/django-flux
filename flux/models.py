@@ -81,11 +81,8 @@ class Account(models.Model):
         # return a utils.Timeseries instance
         return timeseries
 
-    def get_mean_label_template(self):
-        return os.path.join(
-            "flux",
-            "mean_label_%s.html" % self.type,
-        )
+    def get_mean_label(self):
+        return getattr(settings, "FLUX_%s_MEAN_LABEL" % self.type.upper())
 
     def follow_url(self):
         if self.type=="rss":

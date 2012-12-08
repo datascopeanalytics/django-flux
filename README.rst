@@ -58,8 +58,8 @@ Quick start
 Options
 =======
 
-Interactivity on mouseover for bars
------------------------------------
+Labels on mouseover with bars
+-----------------------------
 
 Optionally include labels for the bars with `d3.js <http://d3js.org>`_
 by including the following in your templates::
