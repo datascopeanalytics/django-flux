@@ -26,13 +26,12 @@ $(document).ready(function () {
 	    	.attr("class", "hover_info")
 		.html(default_message);
 
-	    // map the index of the element in the data array to the
-	    // width of the svg
-	    var w = $(this).width();
-
-	    // map the value of the element in the data array to the
-	    // height of the svg
-	    var h = $(this).height();
+	    // get the height and width of the svg
+	    var w, h;
+	    var svg = d3.select(this).selectAll("svg").each(function () {
+		w = $(this).width();
+		h = $(this).height();
+	    });
 
 	    // add the transparent rectangle
 	    d3.select(this).selectAll(".timeseries.sparkline")
