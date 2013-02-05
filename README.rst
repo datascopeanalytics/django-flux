@@ -104,6 +104,31 @@ and you should see something like this:
    :alt: sparkline view
    :align: center
 
+Labels on mouseover of sparkline
+--------------------------------
+
+Optionally include labels for each `sparkline
+<http://en.wikipedia.org/wiki/Sparkline>`_ with `d3.js
+<http://d3js.org>`_ by including the following in your templates::
+  
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/timeseries.css" />
+    <link rel="stylesheet" href="{{STATIC_URL}}flux/css/sparkline.css" />
+
+    {% load flux %}
+    {% flux_timeseries account %}
+
+    <script src="//d3js.org/d3.v2.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="{{STATIC_URL}}flux/js/sparkline.js"></script>
+    <script src="{{STATIC_URL}}flux/js/sparkline_mouseover_labels.js"></script>
+
+and you should see something like this:
+
+.. image:: https://github.com/datascopeanalytics/django-flux/raw/master/docs/sparkline_labelled.png
+   :alt: labelled sparkline in the timeseries view
+   :align: center
+
+
 Production usage
 ================
 
