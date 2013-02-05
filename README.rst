@@ -1,7 +1,7 @@
-Here's the situation. You're on a website that you think is pretty
-cool and you think it may be worth following them on Twitter (or RSS,
-Facebook, Google+, etc). You hesitate. Will you be inundated with
-irrelevant content?
+Here's the situation. You're on a website and you think to yourself,
+"whoa, this site is gnarly! I'd really like to stay up to date with
+this." You hesitate. Will you be inundated with irrelevant content on
+Twitter, etc.?
 
 Although this information is readily available and often a click or
 two away, these additional clicks create an unnecessary barrier to
@@ -23,7 +23,7 @@ Quick start
     [shell]$ pip install django-flux
 
 #. Add ``flux`` to the `INSTALLED_APPS
-   <https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps>`
+   <https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps>`_
    in `settings.py` of your django project::
 
     INSTALLED_APPS += ('flux', )
@@ -51,7 +51,7 @@ Quick start
 
    and you should see something like this:
 
-   .. image:: https://github.com/deanmalmgren/django-flux/raw/master/docs/basic_view.png
+   .. image:: https://github.com/datascopeanalytics/django-flux/raw/master/docs/basic_view.png
       :alt: default flux timeseries view
       :align: center
 
@@ -77,7 +77,7 @@ by including the following in your templates::
 
 and you should see something like this:
 
-.. image:: https://github.com/deanmalmgren/django-flux/raw/master/docs/bar_labelled.png
+.. image:: https://github.com/datascopeanalytics/django-flux/raw/master/docs/bar_labelled.png
    :alt: labelled bars in the timeseries view
    :align: center
 
@@ -100,7 +100,7 @@ Optionally include `sparklines
 
 and you should see something like this:
 
-.. image:: https://github.com/deanmalmgren/django-flux/raw/master/docs/sparkline.png
+.. image:: https://github.com/datascopeanalytics/django-flux/raw/master/docs/sparkline.png
    :alt: sparkline view
    :align: center
 
@@ -178,12 +178,12 @@ Contribute!
 ===========
 
 #. Clone the code from `github
-   <https://github.com/deanmalmgren/django-flux>`_
+   <https://github.com/datascopeanalytics/django-flux>`_
 
 #. Setup the virtualenv by following the instructions in
-   `example_project/virtualenv_requirements.txt <https://raw.github.com/deanmalmgren/django-flux/master/example_project/virtualenv_requirements.txt>`_
+   `example_project/virtualenv_requirements.txt <https://raw.github.com/datascopeanalytics/django-flux/master/example_project/virtualenv_requirements.txt>`_
 
 #. Edit, test, and share your code. See the `issues page
-   <https://github.com/deanmalmgren/django-flux/issues>`_ for
+   <https://github.com/datascopeanalytics/django-flux/issues>`_ for
    inspiration and to coordinate with the community.
 
