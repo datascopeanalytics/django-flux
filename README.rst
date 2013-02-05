@@ -96,7 +96,7 @@ Optionally include `sparklines
 
     <script src="//d3js.org/d3.v2.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="{{STATIC_URL}}flux/js/sparklines.js"></script>
+    <script src="{{STATIC_URL}}flux/js/sparkline.js"></script>
 
 and you should see something like this:
 

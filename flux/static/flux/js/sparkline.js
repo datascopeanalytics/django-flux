@@ -5,8 +5,11 @@ $(document).ready(function () {
 
 
     // get the counts from all of the data-count attributes on
-    // .bin_inner and store them in a data array
+    // .bin_inner and store them in a data array and also globally in
+    // document.flux_sparkline_data for optionally adding labels on
+    // mouseover.
     var data = [];
+    document.flux_sparkline_data = data;
     d3.selectAll(".flux_timeseries_container .flux_timeseries .timeseries")
 	.each(function (d, i){
 	    data.push([]);
@@ -45,7 +48,10 @@ $(document).ready(function () {
 	    });
 
 	    // add the sparkline to the DOM
-	    d3.select(this).append("svg:path").attr("d", line(data[k]));
+	    d3.select(this)
+		.append("svg:path")
+		.attr("d", line(data[k]))
+		.on("mouseover", function () {console.log('hi');});
 
     });
 
