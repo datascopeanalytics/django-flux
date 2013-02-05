@@ -51,6 +51,8 @@ for dirpath, dirnames, filenames in os.walk(src_dir):
         package_data[src_dir].extend([os.path.join(dirpath, f) 
                                       for f in filenames])
 
+github_url = "http://github.com/datascopeanalytics/django-flux"
+
 setup(
     name="django-flux",
     version=__import__("flux").__version__,
@@ -59,8 +61,8 @@ setup(
     author="Dean Malmgren",
     author_email="dean.malmgren@datascopeanalytics.com",
     license="MIT, see LICENSE.rst",
-    url="http://github.com/deanmalmgren/django-flux",
-    download_url="http://github.com/deanmalmgren/django-flux/archives/master",
+    url=github_url,
+    download_url="%s/archives/master" % github_url,
     install_requires=dependencies,
     packages=packages,
     package_data=package_data,
