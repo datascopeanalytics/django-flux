@@ -1,4 +1,3 @@
-// convert the bar charts into sparklines
 $(document).ready(function () {
     
     // TODO: only run this functionality when the browser is svg
@@ -16,7 +15,7 @@ $(document).ready(function () {
 	});
     });
 
-    // remove all of the existing timeseries data
+    // remove all of the existing timeseries divs from the DOM
     d3.selectAll(".flux_timeseries_container .flux_timeseries .timeseries")
     	.remove();
     
@@ -45,11 +44,15 @@ $(document).ready(function () {
 		return y(d);
 	    });
 
+	    // add the sparkline to the DOM
 	    d3.select(this).append("svg:path").attr("d", line(data[k]));
 
     });
 
-    // change the display to show the timeseries sparklines
+    // change the display to show the timeseries sparklines. By
+    // default, the .flux_timeseries divs are display:none in the
+    // CSS. Displaying everything at the end avoids problems with
+    // flashing
     d3.selectAll(".flux_timeseries_container .flux_timeseries")
 	.style("display", "inline");
 

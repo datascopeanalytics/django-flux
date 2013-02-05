@@ -1,7 +1,9 @@
-// convert the bar charts into sparklines
 $(document).ready(function () {
     
-    // add an element to the DOM to display the label 
+    // This basically works by adding an element to the DOM to display
+    // the label and then replacing the html of the .hover_info
+    // element with the appropriate data-count attribute from the
+    // .bin_inner class on mouseover.
 
     // get the counts from all of the data-count attributes on
     // .bin_inner and store them in a data array
