@@ -14,7 +14,11 @@ $(document).ready(function () {
 	.each(function (d, i){
 	    data.push([]);
 	    d3.select(this).selectAll(".bin_inner").datum(function () {
-		data[data.length-1].push(Number(this.dataset["count"]));
+		data[data.length-1].push({
+		    "count": Number(this.dataset["count"]),
+		    "beg": new Date(this.dataset["beg"]),
+		    "end": new Date(this.dataset["end"])
+		});
 	});
     });
 
@@ -28,30 +32,29 @@ $(document).ready(function () {
     	.append("svg")
     	.attr("class", "timeseries sparkline").each(function (d, k) {
 
-	    // map the index of the element in the data array to the
-	    // width of the svg
-	    var x = d3.scale.linear()
-		.domain([0, data[k].length])
-		.range([0, $(this).width()]);
+    	    // map the index of the element in the data array to the
+    	    // width of the svg
+    	    var x = d3.scale.linear()
+    		.domain([0, data[k].length])
+    		.range([0, $(this).width()]);
 
-	    // map the value of the element in the data array to the
-	    // height of the svg
-	    var y = d3.scale.linear()
-		.domain([d3.max(data[k]), 0])
-		.range([0, $(this).height()]);
+    	    // map the value of the element in the data array to the
+    	    // height of the svg
+    	    var y = d3.scale.linear()
+    		.domain([d3.max(data[k].map(function (d) {return d.count})), 0])
+    		.range([0, $(this).height()]);
 
-	    // create a line path from the data
-	    var line = d3.svg.line().x(function (d, i) {
-		return x(i+0.5);
-	    }).y(function (d, i) {
-		return y(d);
-	    });
+    	    // create a line path from the data
+    	    var line = d3.svg.line().x(function (d, i) {
+    		return x(i+0.5);
+    	    }).y(function (d, i) {
+    		return y(d.count);
+    	    });
 
-	    // add the sparkline to the DOM
-	    d3.select(this)
-		.append("svg:path")
-		.attr("d", line(data[k]))
-		.on("mouseover", function () {console.log('hi');});
+    	    // add the sparkline to the DOM
+    	    d3.select(this)
+    		.append("svg:path")
+    		.attr("d", line(data[k]));
 
     });
 
@@ -60,6 +63,6 @@ $(document).ready(function () {
     // CSS. Displaying everything at the end avoids problems with
     // flashing
     d3.selectAll(".flux_timeseries_container .flux_timeseries")
-	.style("display", "inline");
+    	.style("display", "inline");
 
 });

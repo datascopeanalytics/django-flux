@@ -46,7 +46,7 @@ $(document).ready(function () {
 		.attr("fill-opacity", 0)
 		.attr("stroke", "none")
 		.on("mouseover", function (d, i) {
-		    hover_info.html(data[k][i]);
+		    hover_info.html(data[k][i].count);
 		}).on("mouseout", function (d, i) {
 		    hover_info.html(default_message);
 		});
