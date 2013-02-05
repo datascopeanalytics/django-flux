@@ -83,6 +83,18 @@ class Command(BaseCommand):
                         verb = "updated"
                     self.stderr.write("%s %s\n" % (verb, instance))
 
+    def update_counter(self, counter, t):
+        """This method is used to update the counter"""
+        if not isinstance(counter, Counter):
+            raise TypeError("counter must be a collections.Counter object")
+        if isinstance(t, datetime.datetime):
+            counter[t.date()] += 1
+        elif isinstance(t, datetime.date):
+            counter[t] += 1
+        else:
+            msg = "t must be a datetime.datetime or datetime.date instance!"
+            raise TypeError(m)
+
     def update_twitter(self):
         for account in models.Account.objects.filter(type__exact="twitter"):
         
@@ -103,7 +115,7 @@ class Command(BaseCommand):
             fmt_str = "%a %b %d %H:%M:%S +0000 %Y"
             for status in statuses:
                 t = datetime.datetime.strptime(status.created_at, fmt_str)
-                counter[t.date()] += 1
+                self.update_counter(counter, t)
 
             # insert data into the database
             self.update_db(account, counter)
@@ -123,7 +135,7 @@ class Command(BaseCommand):
             counter = Counter()
             for item in items:
                 t = dateutil.parser.parse(item['published']).date()
-                counter[t.date()] += 1
+                self.update_counter(counter, t)
 
             # insert data into the database
             self.update_db(account, counter)
@@ -255,7 +267,7 @@ class Command(BaseCommand):
             fmt_str = "%Y-%m-%dT%H:%M:%S+0000"
             for status in statuses["data"]:
                 t = datetime.datetime.strptime(status["created_time"], fmt_str)
-                counter[t.date()] += 1
+                self.update_counter(counter, t)
 
             # insert data into the database
             self.update_db(account, counter)
@@ -303,7 +315,7 @@ class Command(BaseCommand):
             counter = Counter()
             for status in result["values"]:
                 t = datetime.datetime.fromtimestamp(status['timestamp']/1000.)
-                counter[t.date()] += 1
+                self.update_counter(counter, t)
 
             # insert data into the database
             self.update_db(account, counter)
