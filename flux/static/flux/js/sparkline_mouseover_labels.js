@@ -3,6 +3,10 @@ $(document).ready(function () {
     // TODO: only run this functionality when the browser is svg
     // compliant. Use modernizr?
 
+    // TODO: use 'mousemove' event to detect mouse position and
+    // d3.bisect to find nearest point. this might be a more intuitive
+    // way to display the label.
+
     // This works by adding a transparent rectangle over the top of
     // the sparkline. On mouseover of the rectangle, we display the
     // .hover_info element
@@ -15,7 +19,7 @@ $(document).ready(function () {
     d3.selectAll(".flux_timeseries_container .flux_timeseries")
 	.each(function (d, k){
 
-	    var default_message = "hello";
+	    var default_message = "";
 
 	    // add the label box for each .flux_timeseries element
 	    var hover_info = d3.select(this).insert("p", ":first-child")
